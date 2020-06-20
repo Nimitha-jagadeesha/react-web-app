@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 
 class DishDetail extends Component {
+
   renderDish(dish) {
     if (dish != null)
       return (
@@ -24,7 +25,7 @@ class DishDetail extends Component {
                     <CardText>
                     <div>{comments.comment}</div>
                     <br />
-                    <div >{`--${comments.author}, ${(new Date(comments.date).toDateString())}`}</div>
+                    <div >{`--${comments.author}, ${new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comments.date)))}`}</div>
                     <br />
                   </CardText>
                   );
@@ -37,7 +38,7 @@ class DishDetail extends Component {
     else return <div></div>;
   }
   render() {
-    return <div>{this.renderDish(this.props.SelectedDish)}</div>;
+    return <div class="container">{this.renderDish(this.props.dish)}</div>;
   }
 }
 export default DishDetail;
