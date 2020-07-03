@@ -16,7 +16,7 @@ import { FadeTransform } from 'react-animation-components';
                     <h4>{errMess}</h4>
             );
         }
-        else 
+        else if(item)
             return(
                 <FadeTransform
                 in
@@ -33,11 +33,13 @@ import { FadeTransform } from 'react-animation-components';
                 </Card>
             </FadeTransform>
             );
+            else
+            return <div></div>
     
     }
 
 function Home(props) {
-   
+   console.log(props)
     return(
         <div className="container">
             <div className="row align-items-start">

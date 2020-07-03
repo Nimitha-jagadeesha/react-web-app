@@ -24,8 +24,7 @@ class Contact extends Component {
 
   handleSubmit(values) {
     console.log("Current State is: " + JSON.stringify(values));
-    alert("Current State is: " + JSON.stringify(values));
-    this.props.resetFeedbackForm();
+    this.props.postfeedback(values);
   }
 
   render() {
@@ -258,6 +257,9 @@ class Contact extends Component {
                 <Col md={{ size: 10, offset: 2 }}>
                   <Button type="submit" color="primary">
                     Send Feedback
+                  </Button> {` `} 
+                  <Button outline color="primary" onClick={this.props.resetFeedbackForm}>
+                 Cancel
                   </Button>
                 </Col>
               </Row>
