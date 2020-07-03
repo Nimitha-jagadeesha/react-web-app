@@ -40,7 +40,7 @@ class CreateComment extends Component{
   }
   handleSubmit = (values) => {
     this.toggleModal();
-    this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+    this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
   };
   render() {
     return(<div>
@@ -161,7 +161,7 @@ function RenderDish({ dish,isLoading,errMess }) {
   }
 }
 function RenderComments(props) {
-  var addComment=props.addComment;
+  var  postComment=props.postComment;
   var dishId=props.dishId;
   if (props != null) {
     return (
@@ -181,7 +181,7 @@ function RenderComments(props) {
               </CardText>
             );
           })}
-          <CreateComment dishId={dishId} addComment={addComment}/>
+          <CreateComment dishId={dishId} postComment={postComment}/>
         </CardBody>
       </Card>
     );
@@ -210,6 +210,7 @@ else if (props.errMess) {
 }
 else if (props.dish != null) 
   {
+  
     return (
       <div class="container">
         <div className="row">
@@ -231,7 +232,7 @@ else if (props.dish != null)
           <div className="col-12 col-md-5 m-1">
            
           <RenderComments comments={props.comments}
-          addComment={props.addComment}
+          postComment={props.postComment}
           dishId={props.dish.id}
         />
         </div>
